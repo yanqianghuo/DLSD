@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The visualization of DLSD detection results.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        .container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 50px; /* 增加图像上方的间距 */
+        }
+        .label {
+            position: absolute;
+            top: 0;
+            width: 25%; /* 每个标签占GIF宽度的四分之一 */
+            text-align: center;
+            font-size: 24px; /* 增大字体 */
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 字体阴影使文字更清晰 */
+        }
+        .label1 { left: 0; }    /* 第一个标签位置 */
+        .label2 { left: 25%; }  /* 第二个标签位置 */
+        .label3 { left: 50%; }  /* 第三个标签位置 */
+        .label4 { left: 75%; }  /* 第四个标签位置 */
+    </style>
+</head>
+<body>
+
+    <h1>The visualization of DLSD detection results.</h1>
+
+    <div class="container">
+        <div class="label label1">Row image</div>
+        <div class="label label2">Ground-truth</div>
+        <div class="label label3">DLSD w/o dual-attention</div>
+        <div class="label label4">DLSD w/ dual-attention</div>
+        <img src="./output.gif" alt="拼接好的GIF图像">
+    </div>
+
+</body>
+</html>
