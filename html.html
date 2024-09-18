@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The visualization of DLSD detection results.</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            table-layout: fixed;
+            border: none; /* Remove table borders */
+        }
+        thead {
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1;
+        }
+        th {
+            padding: 10px;
+            background: #f0f0f0;
+            text-align: center;
+            font-size: 18px; /* Adjust font size */
+            font-weight: bold;
+            color: #333;
+            border: none; /* Remove border */
+            vertical-align: top;
+        }
+        td {
+            padding: 0;
+            border: none; /* Remove border */
+        }
+        .header-row {
+            display: flex;
+        }
+        .header-cell {
+            flex: 1;
+            padding: 10px;
+            background: #f0f0f0;
+            border-right: 1px solid #ddd; /* Optional: visual separation */
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .header-cell:last-child {
+            border-right: none;
+        }
+        .image-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px; /* Add margin between rows */
+            gap: 20px; /* Add space between images */
+        }
+        .image-cell {
+            flex: 1;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 10px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            aspect-ratio: 24 / 15; /* Maintain 24:15 aspect ratio */
+        }
+        .label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #007BFF; /* 蓝色 */
+        }
+        .label1 {
+            background: #e9e9e9;
+        }
+        .label2 {
+            background: #e9e9e9;
+        }
+        .label3 {
+            background: #e9e9e9;
+        }
+        .label4 {
+            background: #e9e9e9;
+        }
+        .note {
+            position: static; /* Makes the element stick to the top when scrolling */
+            top: 80px; /* Adjust this value as needed to place the note below the title */
+            margin: 20px 0;
+            padding: 10px;
+            background: #f4f4f4; /* Matches page background */
+            border: none; /* Remove border */
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            text-align: left;
+            max-width: 1200px;
+            margin: 20px auto;
+            z-index: 1; /* Ensure note is above other content */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>The visualization of DLSD detection results.</h1>
+
+    <div class="note">
+        Green lines represent joints, pink lines represent filled joints, yellow lines represent bridge expansion joints, and blue lines represent road boundary lines.
+    </div>
+
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="header-cell"><div class="label label1">Row image</div></th>
+                    <th class="header-cell"><div class="label label2">Ground-truth</div></th>
+                    <th class="header-cell"><div class="label label3">DLSD w/o dual-attention</div></th>
+                    <th class="header-cell"><div class="label label4">DLSD w/ dual-attention</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Repeat for each image set -->
+                <!-- Example for Image 1 -->
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/1_resized.jpg" alt="1_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/1_gt.jpg" alt="1_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/1_pred2.jpg" alt="1_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/1_pred.jpg" alt="1_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Repeat similar rows for images 2 to 35 -->
+                <!-- Example for Image 2 -->
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/2_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/2_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/2_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/2_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/3_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/3_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/3_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/3_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/4_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/4_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/4_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/4_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/5_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/5_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/5_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/5_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/6_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/6_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/6_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/6_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/7_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/7_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/7_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/7_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/8_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/8_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/8_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/8_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/9_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/9_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/9_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/9_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/10_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/10_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/10_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/10_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/11_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/11_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/11_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/11_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/12_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/12_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/12_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/12_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/13_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/13_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/13_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/13_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/14_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/14_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/14_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/14_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/15_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/15_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/15_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/15_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/16_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/16_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/16_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/16_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/17_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/17_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/17_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/17_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/18_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/18_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/18_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/18_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/19_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/19_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/19_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/19_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/20_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/20_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/20_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/20_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/21_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/21_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/21_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/21_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/22_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/22_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/22_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/22_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/23_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/23_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/23_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/23_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/24_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/24_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/24_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/24_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/25_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/25_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/25_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/25_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/26_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/26_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/26_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/26_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/27_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/27_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/27_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/27_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/28_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/28_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/28_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/28_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/29_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/29_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/29_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/29_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/30_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/30_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/30_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/30_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/31_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/31_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/31_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/31_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/32_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/32_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/32_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/32_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/33_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/33_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/33_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/33_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/34_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/34_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/34_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/34_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="image-row">
+                            <div class="image-cell"><img src="pavement_img/35_resized.jpg" alt="2_resized"></div>
+                            <div class="image-cell"><img src="pavement_img/35_gt.jpg" alt="2_gt"></div>
+                            <div class="image-cell"><img src="pavement_img/35_pred2.jpg" alt="2_pred2"></div>
+                            <div class="image-cell"><img src="pavement_img/35_pred.jpg" alt="2_pred"></div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Continue for remaining images up to Image 35 -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
