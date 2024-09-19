@@ -68,12 +68,11 @@
             flex: 1;
             box-sizing: border-box;
             text-align: center;
-            padding: 10px;
+            padding: 5px;
         }
         img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
             aspect-ratio: 24 / 15; /* Maintain 24:15 aspect ratio */
         }
         .label {
@@ -94,20 +93,31 @@
             background: #e9e9e9;
         }
         .note {
-            position: static; /* Makes the element stick to the top when scrolling */
-            top: 80px; /* Adjust this value as needed to place the note below the title */
-            margin: 20px 0;
-            padding: 10px;
-            background: #f4f4f4; /* Matches page background */
-            border: none; /* Remove border */
-            border-radius: 8px;
-            font-size: 14px;
-            color: #333;
-            text-align: left;
-            max-width: 1200px;
-            margin: 20px auto;
-            z-index: 1; /* Ensure note is above other content */
+        position: static;
+        margin: 20px 0;
+        padding: 10px;
+        background: #f4f4f4;
+        border: none;
+        border-radius: 8px;
+        font-size: 20px; /* 增加字体大小 */
+        color: #333;
+        text-align: left;
+        max-width: 1200px;
+        margin: 20px auto;
+        z-index: 1;
         }
+        .color-box {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 8px;
+            vertical-align: middle;
+            border-radius: 2px; /* 可选，给色块添加一点圆角 */
+        }
+        .light-green { background-color: rgb(144, 238, 144); } /* 淡绿色 */
+        .orchid { background-color: rgb(214, 112, 218); } /* 番茄色 */
+        .light-coral { background-color: rgb(230, 216, 173); } /* 淡珊瑚色 */
+        .light-blue { background-color: rgb(122, 160, 255); } /* 淡蓝色 */
     </style>
 </head>
 <body>
